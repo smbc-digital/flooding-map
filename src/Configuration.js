@@ -29,7 +29,7 @@ const Configuration = {
                       fillOpacity: 1
                     })
                 }
-            }
+            },
             displayOverlay: true,
             visibleByDefault: true,
         },
