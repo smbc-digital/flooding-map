@@ -1,6 +1,5 @@
-import Leaflet from 'leaflet'
 import { flooding_testPopup } from './Popups'
-//import { flooding_testStyle } from './Styles'
+import { flooding_testStyle } from './Styles'
 
 const Configuration = {
     Map: {
@@ -21,16 +20,8 @@ const Configuration = {
             layerOptions: {
                 onEachFeature: flooding_testPopup,
                 maxZoom: 2,
-                pointToLayer: (feature, latlng) => {
-                    return Leaflet.circleMarker(latlng, {
-                      radius: 8,
-                      fillColor: '#48BB78',
-                      color: '#000',
-                      weight: 1,
-                      fillOpacity: 1
-                    })
-                }
-            },
+                style: flooding_testStyle,      
+                },
             displayOverlay: true,
             visibleByDefault: true,
         },
