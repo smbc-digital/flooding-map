@@ -158,6 +158,15 @@ function App () {
     return () => mapRef.current.removeEventListener('moveend', setDynamicLayers)
   }, [])
 
+  useEffect(() => {
+    mapRef.current.on('click', onMapClick)
+  }, [])
+
+  const onMapClick = (event) => Leaflet.popup()
+    .setLatLng(event.latlng)
+    .setContent(`You clicked the map at <br/> Lat: ${event.latlng.lat} <br/> Long: ${event.latlng.lng}`)
+    .openOn(mapRef.current)
+
   const [onClickLatLng, setOnClickLatLng] = useState()
   useEffect(() => {
     if (!onClickLatLng) return
