@@ -1,12 +1,12 @@
 import fetch from 'cross-fetch'
-let target_url
+let targetUrl
 
 const getTargetUrl = () => {
-    if(!target_url){
-        target_url = generateTargetUrl()
+    if(!targetUrl){
+        targetUrl = generateTargetUrl()
     }
 
-    return target_url
+    return targetUrl
 }
 
 const generateTargetUrl = () => {

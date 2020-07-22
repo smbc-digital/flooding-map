@@ -1,8 +1,7 @@
 import Leaflet from 'leaflet'
 import mapboxGL from 'mapbox-gl-leaflet' // eslint-disable-line no-unused-vars
 
-const token =
-  'pk.eyJ1IjoiZ2lzLXN0b2NrcG9ydCIsImEiOiJja2N2dWdubHUwN3IyMnJtb3g3cGM3b3QyIn0.J17J3wAhw8tkx0JWtLKHxw'
+const token = 'pk.eyJ1IjoiZ2lzLXN0b2NrcG9ydCIsImEiOiJjazV4dHlrd3cwNGxtM2RwM25zbG9saWJpIn0.vsrfkBERdMWjPgzj0TFjuA'
 
 const greyscale = Leaflet.mapboxGL({
   style: 'mapbox://styles/gis-stockport/ck5gr2oav0utc1ipbdkcjnjop',
@@ -11,7 +10,7 @@ const greyscale = Leaflet.mapboxGL({
   maxZoom: 20
 })
 
-const os_open = Leaflet.mapboxGL({
+const osOpen = Leaflet.mapboxGL({
   style: 'mapbox://styles/gis-stockport/ck5mfgm1s38fb1jn4shus1hbd',
   accessToken: token,
   id: 'mapbox.os_open',
@@ -25,4 +24,4 @@ const streetLayer = Leaflet.mapboxGL({
   maxZoom: 20
 })
 
-export { greyscale, os_open, streetLayer }
+export { greyscale, osOpen, streetLayer }
