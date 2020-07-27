@@ -1,6 +1,6 @@
 const floodingPopup = (feature, layer) => {
   let noOfDays = Math.floor(
-    (new Date() - new Date(feature.properties.job_entry_date)) /
+    (new Date() - new Date(feature.properties.enquiry_time)) /
       (1000 * 3600 * 24)
   )
 
@@ -9,7 +9,7 @@ const floodingPopup = (feature, layer) => {
       <i class="fa fa-map-signs" aria-hidden="true"></i>
       <p class="title">Flooding Incident</p>
       <p class="info">Enquiry Number: ${feature.properties.enquiry_number}</p>
-      <p class="info">Type: ${feature.properties.status_name}</p>
+      <p class="info">${feature.properties.flood_type} reported.</p>
       <p class="info">Flood reported ${noOfDays} days ago</p>
     </div>`)
   }
