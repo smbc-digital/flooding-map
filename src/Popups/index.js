@@ -1,11 +1,6 @@
 import { GetUserFriendlyTerminology } from '../Helpers'
 
 const floodingPopup = (feature, layer) => {
-  let noOfDays = Math.floor(
-    (new Date() - new Date(feature.properties.enquiry_time)) /
-    (1000 * 3600 * 24)
-  )
-
   layer.bindPopup(
     `<div>
       <p>Type of report: ${GetUserFriendlyTerminology(feature.properties.subject_code)}</p>
