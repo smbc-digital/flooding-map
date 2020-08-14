@@ -149,7 +149,7 @@ function App() {
 
   const onMapClick = (event) => Leaflet.popup()
     .setLatLng(event.latlng)
-    .setContent(reportFloodPopup())
+    .setContent(reportFloodPopup(event.latlng))
     .openOn(mapRef.current)
 
   const [onClickLatLng, setOnClickLatLng] = useState()
@@ -211,7 +211,7 @@ function App() {
     return null
   }
 
-  return <div id='map' />
+  return <div id='map' className={Config.Map.Class}/>
 }
 
 export default App

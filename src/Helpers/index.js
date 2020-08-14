@@ -1,46 +1,32 @@
 import fetch from 'cross-fetch'
-let targetUrl
-
-const getTargetUrl = () => {
-    if(!targetUrl){
-        targetUrl = generateTargetUrl()
-    }
-
-    return targetUrl
-}
-
-const generateTargetUrl = () => {
-    if (window.location.hostname.includes('localhost')) {
-        return  'http://localhost:57726'
-    }
-    else if (window.location.hostname.includes('int'))
-    {
-        return  'int-dts.smbcdigital.net'
-    }
-    else if (window.location.hostname.includes('qa'))
-    {
-        return  'qa-dts.smbcdigital.net'
-    }
-    else if (window.location.hostname.includes('staging'))
-    {
-        return  'stage-dts.smbcdigital.net'
-    }
-    else if (window.location.hostname.includes('prod'))
-    {
-        return  'myaccount.stockport.gov.uk'
-    }
-}
 
 const fetchWithTimeout = (url, options, timeout = 10000) => {
     return Promise.race([
-        fetch(url,options),
+        fetch(url, options),
         new Promise((resolve, reject) => {
             setTimeout(() => reject(new Error('Timeout')), timeout)
         })
     ])
 }
 
+const GetUserFriendlyTerminology = (subjectCode) => {
+    switch (subjectCode) {
+        case 'GFLO':
+        case 'CWFD':
+        case 'OOH1':
+        case 'PRFL':
+        case 'ADVI':
+            return 'Flooding'
+        case 'CWGU':
+            return 'Blocked grid or drain'
+        case 'BRIV':
+            return 'High water levels on a river or stream'
+        default:
+            return ''
+    }
+}
+
 export {
     fetchWithTimeout,
-    getTargetUrl
+    GetUserFriendlyTerminology
 }

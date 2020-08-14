@@ -10,11 +10,13 @@ const Configuration = {
     DisplayGrayScale: true,
     DisplayStreets: true,
     EnableAddressSearch: true,
-    EnableLocateControl: true
+    EnableLocateControl: true,
+    Class: 'govuk-grid-column-full smbc-map__container'
   },
   DynamicData: [
     {
       key: 'Flooding Layer',
+      //https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=flooding:test_layer&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326
       url:
         'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=flooding:flood_incidents_live&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
       layerOptions: {
