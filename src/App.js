@@ -11,6 +11,7 @@ import {
 } from './Controls'
 import leafletPip from '@mapbox/leaflet-pip'
 import locate from 'leaflet.locatecontrol' // eslint-disable-line no-unused-vars
+import 'font-awesome/css/font-awesome.min.css'
 
 function App() {
   const mapRef = useRef()
