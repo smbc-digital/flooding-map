@@ -15,8 +15,10 @@ const floodingPopup = (feature, layer) => {
     </div>`)
 }
 
-const reportFloodPopup = (latLng) => {
-  return `<button class="govuk-button govuk-!-margin-bottom-0 govuk-!-margin-top-4" data-module="govuk-button">
+const reportFloodPopup = (latlng) => {
+  return `<input id="lat" name="lat" type="hidden" value="${latlng.lat}">
+          <input id="lng" name="lng" type="hidden" value="${latlng.lng}">
+          <button class="govuk-button govuk-!-margin-bottom-0 govuk-!-margin-top-4" data-module="govuk-button">
             Report a flood
           </button>`
 }
