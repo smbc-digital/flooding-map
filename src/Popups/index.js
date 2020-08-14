@@ -1,7 +1,7 @@
 const floodingPopup = (feature, layer) => {
   let noOfDays = Math.floor(
     (new Date() - new Date(feature.properties.enquiry_time)) /
-      (1000 * 3600 * 24)
+    (1000 * 3600 * 24)
   )
 
   layer.bindPopup(
@@ -12,6 +12,12 @@ const floodingPopup = (feature, layer) => {
       <p class="info">${feature.properties.flood_type} reported.</p>
       <p class="info">Flood reported ${noOfDays} days ago</p>
     </div>`)
-  }
+}
 
-export { floodingPopup }
+const reportFloodPopup = (feature, layer) => {
+  return `<button class="govuk-button" data-module="govuk-button">
+  Report a flood
+</button>`
+}
+
+export { floodingPopup, reportFloodPopup }

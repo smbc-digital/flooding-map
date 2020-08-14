@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Leaflet from 'leaflet'
 import { fetchWithTimeout } from './Helpers'
+import { reportFloodPopup } from './Popups'
 import Config from './Configuration.js'
 import { osOpen } from './Tiles'
 import {
@@ -11,7 +12,7 @@ import {
 import leafletPip from '@mapbox/leaflet-pip'
 import locate from 'leaflet.locatecontrol' // eslint-disable-line no-unused-vars
 
-function App () {
+function App() {
   const mapRef = useRef()
 
   const StaticLayerGroup = {}
@@ -40,7 +41,6 @@ function App () {
     setLayerControls()
     setLocateControl()
     setFullscreenControl()
-    addLegend()
   }, [])
 
   const setSearchControl = () => {
@@ -137,21 +137,6 @@ function App () {
     }
   }
 
-  const addLegend = () => {
-    if (Config.Map.Legend.length > 0) {
-      const legend = Leaflet.control({ position: 'bottomright' })
-      legend.onAdd = () => {
-        const div = Leaflet.DomUtil.create('div', 'info legend')
-        Config.Map.Legend.forEach(
-          item =>
-            (div.innerHTML += `<div>${item.Icon}<p>${item.Text}</p></div>`)
-        )
-        return div
-      }
-      legend.addTo(mapRef.current)
-    }
-  }
-
   useEffect(() => {
     mapRef.current.addEventListener('moveend', setDynamicLayers)
 
@@ -164,7 +149,7 @@ function App () {
 
   const onMapClick = (event) => Leaflet.popup()
     .setLatLng(event.latlng)
-    .setContent(`You clicked the map at <br/> Lat: ${event.latlng.lat} <br/> Long: ${event.latlng.lng}`)
+    .setContent(reportFloodPopup())
     .openOn(mapRef.current)
 
   const [onClickLatLng, setOnClickLatLng] = useState()
@@ -181,7 +166,7 @@ function App () {
       .reduce((acc, curr, index, src) => {
         return `${acc} ${curr._popup._content} ${
           index != src.length - 1 ? '<hr/>' : ''
-        }`
+          }`
       }, '')
 
     /** opens new popup with new content and binds to map, this is instead of using
