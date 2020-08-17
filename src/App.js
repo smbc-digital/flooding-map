@@ -144,32 +144,38 @@ function App() {
     return () => mapRef.current.removeEventListener('moveend', setDynamicLayers)
   }, [])
 
-
   useEffect(() => {
-    mapRef.current.on('click', (e) => {
-      var polygonsFoundInMap = leafletPip.pointInLayer(e.latlng, mapRef.current)
-
-      if(polygonsFoundInMap.length > 0)
-        Leaflet.popup()
-          .setLatLng(e.latlng)
-          .setContent(reportFloodPopup(e.latlng))
-          .openOn(mapRef.current)
-    })
+    mapRef.current.on('click', (e) => onMapClick(e))
   }, [mapRef])
 
-  useEffect(() => {
-    var initalData = document.getElementById('map_current_value')
-    if(initalData !== null)
+  const onMapClick = async (event) => {
     {
+      var polygonsFoundInMap = leafletPip.pointInLayer(event.latlng, mapRef.current)
+
+      if (polygonsFoundInMap.length > 0)
+        Leaflet.popup()
+          .setLatLng(event.latlng)
+          .setContent(await reportFloodPopup(event.latlng))
+          .openOn(mapRef.current)
+    }
+  }
+
+  const onMapLoad = async () => {
+    var initalData = document.getElementById('map_current_value')
+    if (initalData !== null) {
       var data = JSON.parse(initalData.value)
       if (data.lat !== undefined && data.lng !== undefined) {
         var lntLng = { lat: data.lng, lng: data.lat }
         Leaflet.popup()
           .setLatLng(lntLng)
-          .setContent(reportFloodPopup(lntLng))
+          .setContent(await reportFloodPopup(lntLng))
           .openOn(mapRef.current)
       }
     }
+  }
+
+  useEffect(() => {
+    onMapLoad()
   }, [mapRef])
 
   const [onClickLatLng, setOnClickLatLng] = useState()
@@ -231,7 +237,7 @@ function App() {
     return null
   }
 
-  return <div id='map' className={Config.Map.Class}/>
+  return <div id='map' className={Config.Map.Class} />
 }
 
 export default App

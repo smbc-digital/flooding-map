@@ -11,18 +11,17 @@ const fetchWithTimeout = (url, options, timeout = 10000) => {
 
 const GetUserFriendlyTerminology = (subjectCode) => {
     switch (subjectCode) {
+        case 'CWGU':
+            return 'Blocked grid or drain'
+        case 'BRIV':
+            return 'High water levels on a river or stream'
         case 'GFLO':
         case 'CWFD':
         case 'OOH1':
         case 'PRFL':
         case 'ADVI':
-            return 'Flooding'
-        case 'CWGU':
-            return 'Blocked grid or drain'
-        case 'BRIV':
-            return 'High water levels on a river or stream'
         default:
-            return ''
+            return 'Flooding'
     }
 }
 
