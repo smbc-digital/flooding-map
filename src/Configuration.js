@@ -20,7 +20,7 @@ const Configuration = {
         'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=flooding:test_layer&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
       layerOptions: {
         onEachFeature: floodingPopup,
-        maxZoom: 3,
+        maxZoom: 16,
         pointToLayer: (feature, latlng) => {
           const svg = '<svg height="20pt" viewBox="0 0 45 39" width="20pt" xmlns="http://www.w3.org/2000/svg"><path d="m3.333773,36.37534l19.333429,-32.696187l19.333431,32.696187z" stroke-width="3.5" stroke="#000" fill="#c83725"/></svg>'
           const url = encodeURI('data:image/svg+xml,' + svg).replace(/#/g, '%23')
