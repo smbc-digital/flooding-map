@@ -17,7 +17,7 @@ const Configuration = {
     {
       key: 'Flooding Layer',
       url:
-        'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=flooding:flood_incidents_live&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+        'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=flooding:test_layer&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
       layerOptions: {
         onEachFeature: floodingPopup,
         maxZoom: 16,
