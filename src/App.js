@@ -116,7 +116,8 @@ function App() {
           icon: 'fa fa-location-arrow',
           strings: {
             title: 'Show your location'
-          }
+          },
+          showPopup: false
         })
         .addTo(mapRef.current)
     }
