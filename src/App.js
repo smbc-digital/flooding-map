@@ -150,13 +150,15 @@ function App() {
 
   const onMapClick = async (event) => {
     {
-      var polygonsFoundInMap = leafletPip.pointInLayer(event.latlng, mapRef.current)
+      if (mapRef.current.getZoom() > Config.Map.MapClickMinZoom) {
+        var polygonsFoundInMap = leafletPip.pointInLayer(event.latlng, mapRef.current)
 
-      if (polygonsFoundInMap.length > 0)
-        Leaflet.popup()
-          .setLatLng(event.latlng)
-          .setContent(await reportFloodPopup(event.latlng))
-          .openOn(mapRef.current)
+        if (polygonsFoundInMap.length > 0)
+          Leaflet.popup()
+            .setLatLng(event.latlng)
+            .setContent(await reportFloodPopup(event.latlng))
+            .openOn(mapRef.current)
+      }
     }
   }
 

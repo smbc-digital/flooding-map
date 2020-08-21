@@ -2,7 +2,6 @@ import { GetUserFriendlyTerminology, fetchWithTimeout } from '../Helpers'
 
 const floodingPopup = (feature, layer) => {
 
-  console.log(layer)
   layer.bindPopup(
     `<div>
       <p class="smbc-body smbc-!-font-color-white">Type of report: ${GetUserFriendlyTerminology(feature.properties.subject_code)}</p>

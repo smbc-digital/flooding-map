@@ -11,7 +11,8 @@ const Configuration = {
     DisplayStreets: true,
     EnableAddressSearch: true,
     EnableLocateControl: true,
-    Class: 'govuk-grid-column-full smbc-map__container'
+    Class: 'govuk-grid-column-full smbc-map__container',
+    MapClickMinZoom: 16
   },
   DynamicData: [
     {
