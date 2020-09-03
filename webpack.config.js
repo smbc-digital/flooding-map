@@ -56,7 +56,7 @@ let config = {
     plugins: [
         new CleanWebpackPlugin(),
         new CompressionPlugin({
-            filename: '[path].gz[query]',
+            filename: '[path]',
             test: /\.js$|\.css$|\.html$/,
             algorithm: 'gzip',
             deleteOriginalAssets: false
