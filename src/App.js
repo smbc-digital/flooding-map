@@ -166,7 +166,7 @@ function App() {
     if (initalData !== null) {
       var data = JSON.parse(initalData.value)
       if (data.lat !== undefined && data.lng !== undefined) {
-        var lntLng = { lat: data.lng, lng: data.lat }
+        var lntLng = { lat: data.lat, lng: data.lng }
         mapRef.current.setView([data.lat, data.lng], 18)
         Leaflet.popup()
           .setLatLng(lntLng)
