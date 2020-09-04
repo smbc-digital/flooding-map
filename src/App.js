@@ -150,16 +150,14 @@ function App() {
   }, [mapRef])
 
   const onMapClick = async (event) => {
-    {
-      if (mapRef.current.getZoom() > Config.Map.MapClickMinZoom) {
-        var polygonsFoundInMap = leafletPip.pointInLayer(event.latlng, mapRef.current)
+    if (mapRef.current.getZoom() > Config.Map.MapClickMinZoom) {
+      var polygonsFoundInMap = leafletPip.pointInLayer(event.latlng, mapRef.current)
 
-        if (polygonsFoundInMap.length > 0)
-          Leaflet.popup()
-            .setLatLng(event.latlng)
-            .setContent(await reportFloodPopup(event.latlng))
-            .openOn(mapRef.current)
-      }
+      if (polygonsFoundInMap.length > 0)
+        Leaflet.popup()
+          .setLatLng(event.latlng)
+          .setContent(await reportFloodPopup(event.latlng))
+          .openOn(mapRef.current)
     }
   }
 
@@ -169,6 +167,7 @@ function App() {
       var data = JSON.parse(initalData.value)
       if (data.lat !== undefined && data.lng !== undefined) {
         var lntLng = { lat: data.lng, lng: data.lat }
+        mapRef.current.setView([data.lat, data.lng], 18)
         Leaflet.popup()
           .setLatLng(lntLng)
           .setContent(await reportFloodPopup(lntLng))
