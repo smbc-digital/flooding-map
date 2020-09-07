@@ -91,7 +91,8 @@ const SearchControlOverlay = () => {
     filterData: (_, val2) => val2,
     textPlaceholder: 'Search by postcode',
     zoom: 19,
-    marker: false
+    marker: false,
+    autoResize: false
   })
 }
 
