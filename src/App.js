@@ -47,7 +47,13 @@ function App() {
   const setSearchControl = () => {
     if (Config.Map.EnableAddressSearch) {
       mapRef.current.addControl(SearchControlOverlay())
-      document.querySelector('.search-button').click()
+      document.querySelector('#searchtext18').addEventListener('keypress', searchInputHandler)
+    }
+  }
+
+  const searchInputHandler = (event) => {
+    if(event.key === 'Enter'){
+      event.preventDefault()
     }
   }
 
