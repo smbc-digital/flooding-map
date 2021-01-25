@@ -36,7 +36,34 @@ const Configuration = {
       },
       displayOverlay: false,
       visibleByDefault: true
-    }
+    },
+    {
+      key: 'os1250_line',
+      url: 'https://spatial.stockport.gov.uk/geoserver/wms?',
+      layerOptions: {
+          maxZoom: 20,
+          minZoom: 19,
+          layers: 'base_maps:os1250_line',
+          format: 'image/png',
+          transparent: true
+      },
+      displayOverlay: false,
+      visibleByDefault: true
+  },
+  {
+      key: 'os1250_text',
+      url: 'https://spatial.stockport.gov.uk/geoserver/wms?',
+      layerOptions: {
+          maxZoom: 20,
+          minZoom: 19,
+          layers: 'base_maps:os1250_text',
+          format: 'image/png',
+          transparent: true
+      },
+      displayOverlay: false,
+      visibleByDefault: true
+  }
+
   ],
   StaticData: [
     {
