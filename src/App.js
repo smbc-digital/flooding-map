@@ -36,6 +36,8 @@ function App() {
       Config.Map.StartingZoom || 12
     )
 
+    mapRef.current.attributionControl.addAttribution('© Crown copyright and database rights 2021 Ordnance Survey 100019571. © OpenStreetMap contributors')
+
     setSearchControl()
     setStaticLayers()
     setDynamicLayers()
